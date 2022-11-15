@@ -7,8 +7,13 @@ export async function listCategories(req: Request, res: Response) {
 }
 
 export async function createCategory(req: Request, res: Response) {
-  const { icon, name } = req.body;
-  const category = await Category.create({ icon, name });
+  try {
+    const { icon, name } = req.body;
+    const category = await Category.create({ icon, name });
 
-  res.status(201).json(category);
+    res.status(201).json(category);
+  } catch (error) {
+    console.error(error);
+    res.status(500);
+  }
 }

@@ -7,7 +7,7 @@ export async function listProducts(req: Request, res: Response) {
     res.status(200).json(products);
   } catch (error) {
     console.error(error);
-    res.status(500);
+    res.sendStatus(500);
   }
 }
 
@@ -28,6 +28,6 @@ export async function createProduct(req: Request, res: Response) {
     res.status(201).json(product);
   } catch (error) {
     console.error(error);
-    res.status(500);
+    res.sendStatus(500);
   }
 }

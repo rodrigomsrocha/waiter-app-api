@@ -7,7 +7,7 @@ export async function listOrders(req: Request, res: Response) {
     res.status(200).json(products);
   } catch (error) {
     console.error(error);
-    res.status(500);
+    res.sendStatus(500);
   }
 }
 
@@ -23,6 +23,34 @@ export async function createOrder(req: Request, res: Response) {
     res.status(201).json(order);
   } catch (error) {
     console.error(error);
-    res.status(500);
+    res.sendStatus(500);
+  }
+}
+
+export async function changeOrderStatus(req: Request, res: Response) {
+  try {
+    const { orderId } = req.params;
+    const { status } = req.body;
+
+    if (!['WAITING', 'IN_PRODUCTION', 'DONE'].includes(status))
+      return res.status(400).json({ error: 'Status should be one of these: WAITING, IN_PRODUCTION, DONE' });
+
+    await Order.findByIdAndUpdate(orderId, { status });
+    res.sendStatus(204);
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
+  }
+}
+
+export async function cancelOrder(req: Request, res: Response) {
+  try {
+    const { orderId } = req.params;
+
+    await Order.findByIdAndDelete(orderId);
+    res.sendStatus(204);
+  } catch (error) {
+    console.error(error);
+    res.sendStatus(500);
   }
 }

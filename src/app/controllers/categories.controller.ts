@@ -8,7 +8,7 @@ export async function listCategories(req: Request, res: Response) {
     res.status(200).json(categories);
   } catch (error) {
     console.error(error);
-    res.status(500);
+    res.sendStatus(500);
   }
 }
 
@@ -20,7 +20,7 @@ export async function createCategory(req: Request, res: Response) {
     res.status(201).json(category);
   } catch (error) {
     console.error(error);
-    res.status(500);
+    res.sendStatus(500);
   }
 }
 
@@ -31,6 +31,6 @@ export async function listProductsByCategory(req: Request, res: Response) {
     res.status(200).json(products);
   } catch (error) {
     console.error(error);
-    res.status(500);
+    res.sendStatus(500);
   }
 }

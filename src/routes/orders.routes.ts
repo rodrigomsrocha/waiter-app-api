@@ -1,15 +1,12 @@
 import { Router } from 'express';
+import { createOrder, listOrders } from '../app/controllers/orders.controller';
 
 export const router = Router();
 
 // list orders
-router.get('/orders', (req, res) => {
-  res.send('ok');
-});
+router.get('/orders', listOrders);
 // create order
-router.post('/orders', (req, res) => {
-  res.send('ok');
-});
+router.post('/orders', createOrder);
 // change order status
 router.patch('/orders/:orderId', (req, res) => {
   res.send('ok');

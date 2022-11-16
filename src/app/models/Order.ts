@@ -19,7 +19,7 @@ export const Order = model(
     products: {
       type: [
         {
-          products: {
+          product: {
             type: Schema.Types.ObjectId,
             required: true,
             ref: 'Product',

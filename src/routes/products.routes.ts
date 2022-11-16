@@ -8,7 +8,3 @@ export const router = Router();
 router.get('/products', listProducts);
 // create product
 router.post('/products', uploadMiddleware.single('image'), createProduct);
-// get product by category
-router.get('/categories/:categoryId/products', (req, res) => {
-  res.send('ok');
-});

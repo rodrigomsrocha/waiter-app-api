@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { createCategory, listCategories } from '../app/controllers/categories.controller';
+import { createCategory, listCategories, listProductsByCategory } from '../app/controllers/categories.controller';
 
 export const router = Router();
 
@@ -7,3 +7,5 @@ export const router = Router();
 router.get('/categories', listCategories);
 // create categories
 router.post('/categories', createCategory);
+// get product by category
+router.get('/categories/:categoryId/products', listProductsByCategory);
